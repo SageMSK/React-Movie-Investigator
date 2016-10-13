@@ -7,7 +7,7 @@ function tokenForUser(userModel) {
   return jwt.encode({
     sub: userModel.id,
     iat: timestamp
-  });
+  }, config.secret);
 }
 
 exports.signin = function (req, res, next) {
