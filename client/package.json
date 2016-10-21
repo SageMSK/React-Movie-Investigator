@@ -1,5 +1,5 @@
 {
-  "name": "movie review",
+  "name": "movie-investigator",
   "version": "1.0.0",
   "description": "front-end for movie review website",
   "main": "index.js",
