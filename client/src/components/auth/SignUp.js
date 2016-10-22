@@ -13,11 +13,14 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 );
 
 let SignUp = (props) => {
+  const registerUser = function (newUser) {
+    props.signUpUser(newUser);
+  }
+
   const { error, handleSubmit, pristine, reset, submitting } = props;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Field name="username" component={renderField} type="text" label="Username" />
+    <form onSubmit={handleSubmit(registerUser)}>
       <Field name="email" component={renderField} type="email" label="Email" />
       <Field name="password" component={renderField} type="password" label="Password" />
 
@@ -31,9 +34,9 @@ SignUp = reduxForm({
   form: 'signupform'
 })(SignUp);
 
-// SignUp = connect({
-//   null,
-//   actions
-// })(SignUp);
+SignUp = connect(
+  null,
+  actions
+)(SignUp);
 
 export default SignUp;

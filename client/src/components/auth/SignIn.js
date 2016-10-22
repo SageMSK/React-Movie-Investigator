@@ -16,7 +16,7 @@ let SignIn = (props) => {
   const { error, handleSubmit, pristine, submitting } = props;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(signUserIn)}>
       <Field name="email" component={renderField} type="email" label="Email" />
       <Field name="password" component={renderField} type="password" label="Password" />
 
