@@ -31,3 +31,11 @@ export function signInUser({ email, password }) {
       });
   }
 }
+
+export function signOutUser() {
+  localStorage.removeItem('token');
+
+  return {
+    type: DE_AUTH_USER
+  };
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import * as actions from '../../actions';
 
@@ -16,7 +17,7 @@ let SignIn = (props) => {
   const { error, handleSubmit, pristine, submitting } = props;
 
   return (
-    <form onSubmit={handleSubmit(signUserIn)}>
+    <form onSubmit={handleSubmit}>
       <Field name="email" component={renderField} type="email" label="Email" />
       <Field name="password" component={renderField} type="password" label="Password" />
 
