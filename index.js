@@ -27,6 +27,7 @@ app.use(bodyParser.json({ type: '*/*' }));
 
 // Routers
 app.use('/', userRouter);
+app.use('/movies', reviewRouter);
 
 // Server Setup
 const port = process.env.PORT || 3090;
