@@ -20,11 +20,11 @@ movieReviewRouter.get('/', (req, res, next) => {
 
 movieReviewRouter.post('/', (req, res, next) => {
 
-  Reviews.save(req.body, (err, movieReview) => {
+  Reviews.create(req.body, (err, movieReview) => {
     assert.equal(null, err);
 
     let id = movieReview._id;
-    console.log('Created movie Review:', id);
+    res.end(`Movie review created with id: ${id}`);
   });
 
 });
@@ -37,5 +37,39 @@ movieReviewRouter.delete('/', (req, res, next) => {
   });
 
 });
+
+movieReviewRouter.route('/:movieId')
+.get((req, res, next) => {
+
+  Reviews.findById(req.params.movieId, (err, movieReview) => {
+    assert.equal(null, err);
+    res.json(movieReview);
+  });
+
+})
+
+.put((req, res, next) => {
+
+  Reviews.findByIdAndUpdate(
+    req.params.movieId,
+    { $set: req.body },
+    { new: true },
+    (err, movieReview) => {
+      assert.equal(null, err);
+
+      res.json(movieReview);
+    });
+
+})
+
+.delete((req, res, next) => {
+
+  Reviews.remove({ _id: req.params.movieId }, (err, removedReview) => {
+    assert.equal(null, err);
+    res.json(removedReview);
+    res.end(`Removed movie review with id: ${req.params.movieId}`)
+  });
+
+})
 
 module.exports = movieReviewRouter;
