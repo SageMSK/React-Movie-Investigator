@@ -16,8 +16,12 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 let SignIn = (props) => {
   const { error, handleSubmit, pristine, submitting } = props;
 
+  const LogInUser = (userInfo) => {
+    props.signInUser(userInfo);
+  }
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(LogInUser)}>
       <Field name="email" component={renderField} type="email" label="Email" />
       <Field name="password" component={renderField} type="password" label="Password" />
 
@@ -30,9 +34,6 @@ SignIn = reduxForm({
   form: 'signinform'
 })(SignIn);
 
-// SignIn = connect({
-//   null,
-//   actions
-// })(SignIn);
+SignIn = connect(null, actions)(SignIn);
 
 export default SignIn;

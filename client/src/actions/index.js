@@ -10,7 +10,7 @@ export function signUpUser({ email, password }) {
       .then(response => {
         dispatch({ type: AUTH_USER });
         localStorage.setItem('token', response.data.token);
-        browserHistory.push('/about');
+        browserHistory.push('/');
       })
       .catch(err => {
         console.log(err);
@@ -24,7 +24,7 @@ export function signInUser({ email, password }) {
       .then(response => {
         dispatch({ type: AUTH_USER });
         localStorage.setItem('token', response.data.token);
-        browserHistory.push('/about');
+        browserHistory.push('/');
       })
       .catch(err => {
         console.log(err);

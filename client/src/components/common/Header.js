@@ -1,7 +1,24 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 class Header extends Component {
+  renderUserStatus() {
+    if (this.props.authenticated) {
+      return (
+        <li className="nav-item">
+          <Link className="item-link" to="/signedout">Sign Out</Link>
+        </li>
+      );
+    } else {
+      return (
+        <li className="nav-item">
+          <Link className="item-link" to="/signin">Sign In</Link>
+        </li>
+      );
+    }
+  }
+
   render() {
     return (
       <nav className="navbar navbar-light">
@@ -12,14 +29,12 @@ class Header extends Component {
           <div id="navbar" className="navbar-collapse collapse">
             <ul className="nav navbar-nav navbar-right">
               <li className="nav-item">
-                <Link to="/movies">Movies</Link>
+                <Link className="item-link" to="/movies">Movies</Link>
               </li>
               <li className="nav-item">
-                <Link to="/about">About</Link>
+                <Link className="item-link" to="/about">About</Link>
               </li>
-              <li className="nav-item">
-                <Link to="/signin">Sign In</Link>
-              </li>
+              {this.renderUserStatus()}
             </ul>
           </div>
         </div>
@@ -28,4 +43,8 @@ class Header extends Component {
   }
 }
 
-export default Header;
+function mapStateToProps(state) {
+  return { authenticated: state.auth.authenticated };
+}
+
+export default connect(mapStateToProps)(Header);
