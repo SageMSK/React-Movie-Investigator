@@ -4,9 +4,9 @@ import { AUTH_USER, DE_AUTH_USER } from './types';
 
 const ROOT_URL = 'http://localhost:3090';
 
-export function signUpUser({ email, password }) {
+export function signUpUser({ username, email, password }) {
   return function (dispatch) {
-    axios.post(`${ROOT_URL}/signup`, { email, password })
+    axios.post(`${ROOT_URL}/signup`, { username, email, password })
       .then(response => {
         dispatch({ type: AUTH_USER });
         localStorage.setItem('token', response.data.token);

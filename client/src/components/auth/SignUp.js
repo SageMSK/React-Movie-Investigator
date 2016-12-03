@@ -21,6 +21,7 @@ let SignUp = (props) => {
 
   return (
     <form onSubmit={handleSubmit(registerUser)}>
+      <Field name="username" component={renderField} type="text" label="Username" />
       <Field name="email" component={renderField} type="email" label="Email" />
       <Field name="password" component={renderField} type="password" label="Password" />
 

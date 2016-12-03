@@ -11,11 +11,14 @@ class Header extends Component {
         </li>
       );
     } else {
-      return (
-        <li className="nav-item">
+      return [
+        <li className="nav-item" key={1}>
+          <Link className="item-link join-now" to="/signup">Join Now!</Link>
+        </li>,
+        <li className="nav-item" key={2}>
           <Link className="item-link" to="/signin">Sign In</Link>
         </li>
-      );
+      ];
     }
   }
 
@@ -27,13 +30,15 @@ class Header extends Component {
             <Link to="/" className="navbar-brand">Movie Investigator</Link>
           </div>
           <div id="navbar" className="navbar-collapse collapse">
-            <ul className="nav navbar-nav navbar-right">
+            <ul className="nav navbar-nav">
               <li className="nav-item">
                 <Link className="item-link" to="/movies">Movies</Link>
               </li>
               <li className="nav-item">
                 <Link className="item-link" to="/about">About</Link>
               </li>
+            </ul>
+            <ul className="nav navbar-nav navbar-right">
               {this.renderUserStatus()}
             </ul>
           </div>
