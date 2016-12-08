@@ -1,3 +1,40 @@
 /*
   Content
 ----------------------------------*/
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 55px;
+  padding-bottom: 20px;
+  font-family: 'Oxygen', sans-serif;
+}
+
+/*
+  Header / Navbar
+----------------------------------*/
+.navbar {
+  font-size: 1.2em;
+}
+
+/*
+  HomePage three split info
+----------------------------------*/
+.three-info {
+  text-align: center;
+}
+
+.three-info .three-info-title {
+  padding-bottom: 40px;
+}
+
+.fa-handshake-o {
+  color: #0D47A1;
+}
+
+.fa-search {
+  color: #616161;
+}
+
+.fa-calendar {
+  color: #B71C1C;
+}

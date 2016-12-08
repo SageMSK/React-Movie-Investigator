@@ -30,7 +30,6 @@ exports.signup = function (req, res, next) {
   // Check if user exists
   User.findOne({ username, email }, function (err, existingUser) {
     if (err) { return next(err); }
-    console.log(existingUser);
 
     // if (existingUser) {
     //   res.status(422).send({ error: 'This Email is already used.' });

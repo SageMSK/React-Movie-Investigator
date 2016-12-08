@@ -24,8 +24,8 @@ class Header extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-light">
-        <div className="container-fluid">
+      <nav className="navbar navbar-inverse navbar-fixed-top">
+        <div className="container">
           <div className="navbar-header">
             <Link to="/" className="navbar-brand">Movie Investigator</Link>
           </div>
