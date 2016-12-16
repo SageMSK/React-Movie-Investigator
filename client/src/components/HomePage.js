@@ -15,11 +15,11 @@ class HomePage extends Component {
 
         <div className="container three-info">
           <div className="row">
-            <h2 className="three-info-title">Our Star Reviewers</h2>
+            <h2 className="three-info-title">Our Mission</h2>
             <div className="col-md-4">
               <i className="fa fa-handshake-o fa-5x" aria-hidden="true"></i>
               <h2 className="three-info-individual-title">Honesty</h2>
-              <p>No sponsors or influences! We are a small group of movie lovers. All reviews are our geniune views of the movies.</p>
+              <p>No sponsors or influences! We are a small group of reviewers. All reviews are our geniune views of the movies.</p>
             </div>
             <div className="col-md-4">
               <i className="fa fa-search fa-5x" aria-hidden="true"></i>

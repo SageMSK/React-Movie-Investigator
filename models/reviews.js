@@ -13,7 +13,7 @@ const reviewSchema = new Schema({
     max: 10,
     required: true
   },
-  content: String
+  review: String
 });
 
 const reviewClass = mongoose.model('review', reviewSchema);
