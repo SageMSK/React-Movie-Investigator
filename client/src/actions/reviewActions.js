@@ -24,5 +24,14 @@ export function getReview(paramId) {
       .catch(err => {
         console.log(err);
       });
-  }
+  };
+}
+
+export function createNewReview({ title, score, review }) {
+  return function (dispatch) {
+    axios.post(`${ROOT_URL}/movies`, { title, score, review })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 }
