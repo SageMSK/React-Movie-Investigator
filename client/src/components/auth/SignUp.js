@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 
 import * as actions from '../../actions';
 
-const renderField = ({ input, label, type, meta: { touched, error } }) => (
-  <fieldset className="form-group">
+const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+  <div className="form-group">
     <label>{label}</label>
-    <input type={type} className="form-control" placeholder={label} {...input} />
-    {touched && error && <span>{error}</span>}
-  </fieldset>
+    <div>
+      <input className="form-control" placeholder={label} type={type} {...input} />
+      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+    </div>
+  </div>
 );
 
 let SignUp = (props) => {
