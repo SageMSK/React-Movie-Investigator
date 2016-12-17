@@ -1,11 +1,14 @@
-import { FETCH_ALL_POSTS, FETCH_POST, CREATE_POST, DELETE_POST } from '../actions/types';
+import { GET_ALL_REVIEWS, GET_REVIEW } from '../actions/types';
 
-const INITIAL_STATE = { all: [], post: null };
+const INITIAL_STATE = { allReviews: [], singleReviewPost: null };
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
-    case FETCH_ALL_POSTS:
-      return { ...state, all: action.payload.data };
+    case GET_ALL_REVIEWS:
+      return { ...state, allReviews: action.payload.data };
+
+    case GET_REVIEW:
+      return { ...state, singleReviewPost: action.payload.data };
 
     default:
       return state;

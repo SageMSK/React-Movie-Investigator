@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import * as reviewActions from '../../actions/reviewActions';
 
 class MovieList extends Component {
   componentWillMount() {
-    this.props.fetchAllPosts();
+    this.props.getAllReviews();
   }
 
   renderReviews() {
     return this.props.reviews.map(review => {
       return (
-        <li className="list-group-item" key={review.id}>
-          <p>{review.title}</p>
+        <li className="list-group-item" key={review._id}>
+          <Link to={`movies/${review._id}`}>
+            <p>{review.title}</p>
+          </Link>
         </li>
       )
     })
@@ -20,6 +23,10 @@ class MovieList extends Component {
   render() {
     return (
       <div>
+        <div>
+          <Link to="movies/newreview" className="btn btn-primary">Add New Review</Link>
+        </div>
+
         <p>This is the  the movie review main page.</p>
         <ul className="list-group">
           {this.renderReviews()}
@@ -31,7 +38,7 @@ class MovieList extends Component {
 
 function mapStateToProps(state) {
   return {
-    reviews: state.review.all
+    reviews: state.review.allReviews
   }
 }
 
