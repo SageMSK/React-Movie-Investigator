@@ -6,7 +6,6 @@ const express = require('express'),
       passportService = require('../services/passport');
 
 const movieReviewRouter = express.Router();
-const requireAuth = passport.authenticate('jwt', { session: false });
 const requireSignIn = passport.authenticate('local', { session: false });
 
 movieReviewRouter.get('/', (req, res, next) => {

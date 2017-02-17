@@ -6,7 +6,7 @@ const passport = require('passport'),
       LocalStrategy = require('passport-local');
 
 // Local Strategy
-const localOptions = { usernameField: 'email' };
+const localOptions = { usernameField: 'email', passwordField: 'password' };
 const localLogin = new LocalStrategy(localOptions, function (email, password, done) {
   
   // Verify the user

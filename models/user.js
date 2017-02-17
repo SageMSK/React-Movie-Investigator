@@ -1,20 +1,40 @@
 const mongoose = require('mongoose'),
-      Schema = mongoose.Schema,
-      bcrypt = require('bcrypt-nodejs');
+      bcrypt = require('bcryptjs')
+      validator = require('validator'),
+      jwt = require('jsonwebtoken');
 
-// User Model
+const Schema = mongoose.Schema;
+
 const userSchema = new Schema({
-  username: {
-    type: String,
-    unique: true,
-    lowercase: true
-  },
   email: {
     type: String,
+    required: true,
     unique: true,
-    lowercase: true
+    lowercase: true,
+    minlength: 1,
+    trim: true,
+    validate: {
+      validator: validator.isEmail,
+      message: '{VALUE} is not valid email.'
+    }
   },
-  password: String
+  password: {
+    type: String,
+    required: true,
+    minlength: 6
+  },
+  tokens: [
+    {
+      access: {
+        type: String,
+        required: true
+      },
+      token: {
+        type: String,
+        required: true
+      }
+    }
+  ]
 });
 
 // Encrypt Password

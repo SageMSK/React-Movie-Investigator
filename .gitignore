@@ -1,4 +1,10 @@
+# Node Modules
 node_modules
+
+# Local Data Folder
 data
-config.js
+
+# configs
+config/config.json
+
 npm-debug.log

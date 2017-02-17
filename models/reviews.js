@@ -1,11 +1,13 @@
 const mongoose = require('mongoose'),
       Schema = mongoose.Schema;
 
-const reviewSchema = new Schema({
+const ReviewSchema = new Schema({
   title: {
     type: String,
+    required: true,
     unique: true,
-    required: true
+    minlength: 1,
+    trim: true
   },
   score: {
     type: Number,
@@ -13,9 +15,18 @@ const reviewSchema = new Schema({
     max: 10,
     required: true
   },
-  review: String
+  review: {
+    type: String,
+    required: true,
+    minlength: 1,
+    trim: true
+  },
+  _creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true
+  }
 });
 
-const reviewClass = mongoose.model('review', reviewSchema);
+const ReviewModel = mongoose.model('review', ReviewSchema);
 
-module.exports = reviewClass;
+module.exports = ReviewModel;
