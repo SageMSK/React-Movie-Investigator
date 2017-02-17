@@ -1,20 +1,40 @@
-const express = require('express'),
-      User = require('../models/user'),
-      Authentication = require('../controllers/Authentication'),
-      passport = require('passport'),
-      passportService = require('../services/passport');
+const express = require('express');
+const _ = require('lodash');
+const { ObjectID } = require('mongodb');
 
 const userRouter = express.Router();
-const requireAuth = passport.authenticate('jwt', { session: false });
-const requireSignIn = passport.authenticate('local', { session: false });
+const User = require('./../models/user');
+const authenticate = require('./../services/authenticate');
 
-userRouter.get('/', requireAuth, (req, res, next) => {
-  res.send({ message: 'This should work' });
+userRouter.post('/signup', (req, res) => {
+  let body = _.pick(req.body, ['email', 'password']);
+  let newUser = new User(body);
+
+  newUser.save().then(() => {
+    return newUser.generateAuthToken();
+  }).then(token => {
+    res.header('x-auth', token).json({ token });
+  }).catch(err => res.status(400).json({ err, message: "Email already in use" }));
 });
 
-userRouter.post('/signin', requireSignIn, Authentication.signin);
+userRouter.get('/me', authenticate, (req, res) => {
+  res.json(req.token);
+});
 
-userRouter.post('/signup', Authentication.signup);
+userRouter.post('/login', (req, res) => {
+  let body = _.pick(req.body, ['email', 'password']);
 
-// Export userRouter
+  User.findByCredentials(body.email, body.password).then(user => {
+    user.generateAuthToken().then(token => {
+      res.header('x-auth', token).json({ token });
+    }).catch(err => res.status(400).json(err));
+  }).catch(err => res.status(400).json(err));
+});
+
+userRouter.delete('/me/token', authenticate, (req, res) => {
+  req.user.removeToken(req.token).then(() => {
+    res.status(200).json();
+  }).catch(err => res.status(400).json(err));
+});
+
 module.exports = userRouter;

@@ -14,10 +14,10 @@ const reviewRouter = require('./routes/reviewRouter');
 // App Setup | Middlewares
 app.use(morgan('combined'));
 app.use(bodyParser.json({ type: '*/*' }));
-app.use(cors());
+// app.use(cors());
 
 // Routers
-app.use('/', userRouter);
+app.use('/user', userRouter);
 app.use('/movies', reviewRouter);
 
 // DB Setup

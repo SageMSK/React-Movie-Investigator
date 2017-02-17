@@ -1,18 +1,19 @@
-const mongoose = require('mongoose'),
-      bcrypt = require('bcryptjs')
-      validator = require('validator'),
-      jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
+const validator = require('validator');
+const jwt = require('jsonwebtoken');
+const _ = require('lodash');
+const bcrypt = require('bcryptjs');
 
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
     lowercase: true,
     minlength: 1,
     trim: true,
+    unique: true,
     validate: {
       validator: validator.isEmail,
       message: '{VALUE} is not valid email.'
@@ -22,6 +23,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 6
+  },
+  staruser: {
+    type: Boolean,
+    default: false
   },
   tokens: [
     {
@@ -37,36 +42,83 @@ const userSchema = new Schema({
   ]
 });
 
-// Encrypt Password
-userSchema.pre('save', function (next) {
-  const user = this; // access our user model
+UserSchema.methods.generateAuthToken = function () {
+  let user = this;
+  let access = 'auth';
+  let token = jwt.sign({ _id: user._id.toHexString(), access }, process.env.JWT_SECRET).toString();
 
-  // generate a salt
-  bcrypt.genSalt(10, function (err, salt) {
-    if (err) { return next(err); }
+  user.tokens = [];
+  user.tokens.push({ access, token });
 
-    // Hash/Encrypt the password using the salt
-    bcrypt.hash(user.password, salt, null, function (err, hash) {
-      if (err) { return next(err); }
+  return user.save().then(() => {
+    return token;
+  });
+};
 
-      // overwrite the text password with hashed pw
-      user.password = hash;
-      next(); // Go ahead and save the model
+UserSchema.methods.removeToken = function (token) {
+  let user = this;
+
+  return user.update({
+    $pull: {
+      tokens: { token }
+    }
+  });
+};
+
+UserSchema.statics.findByToken = function (token) {
+  let User = this;
+  let decoded;
+
+  try {
+    decoded = jwt.verify(token, process.env.JWT_SECRET);
+  } catch (e) {
+    // 401 Unauthorized message
+    return Promise.reject({ message: "Unauthorized. User must be logged in." });
+  }
+
+  return User.findOne({
+    '_id': decoded._id,
+    'tokens.token': token,
+    'tokens.access': 'auth'
+  });
+};
+
+UserSchema.statics.findByCredentials = function (email, password) {
+  let User = this;
+
+  return User.findOne({ email }).then(user => {
+    if (!user) {
+      return Promise.reject({ message: "User's email doesn't match" });
+    }
+
+    return new Promise((resolve, reject) => {
+      bcrypt.compare(password, user.password, (err, res) => {
+        if (res) {
+          resolve(user);
+        } else {
+          // Incorrect password input
+          reject({ message: "Email or Password doesn't match" });
+        }
+      });
     });
   });
+};
+
+UserSchema.pre('save', function (next) {
+  let user = this;
+
+  if (user.isModified('password')) {
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(user.password, salt, (err, hash) => {
+        user.password = hash;
+        next();
+      });
+    });
+  } else {
+    next();
+  }
 });
 
-// Create users method to compare password to log in
-userSchema.methods.comparePassword = function (enteredPassword, callback) {
-  bcrypt.compare(enteredPassword, this.password, function (err, isMatch) {
-    if (err) { return callback(err); }
+const UserModel = mongoose.model('User', UserSchema);
 
-    callback(null, isMatch);
-  });
-}
-
-// Create the model class
-const UserClass = mongoose.model('user', userSchema);
-
-// Export the model
-module.exports = UserClass;
+module.exports = UserModel;

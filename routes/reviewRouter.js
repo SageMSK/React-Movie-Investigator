@@ -1,75 +1,60 @@
-const express = require('express'),
-      Reviews = require('../models/reviews'),
-      mongoose = require('mongoose'),
-      assert = require('assert'),
-      passport = require('passport'),
-      passportService = require('../services/passport');
+const express = require('express');
+const _ = require('lodash');
+const { ObjectID } = require('mongodb');
 
 const movieReviewRouter = express.Router();
-const requireSignIn = passport.authenticate('local', { session: false });
+const Review = require('../models/review');
+const authenticate = require('./../services/authenticate');
 
-movieReviewRouter.get('/', (req, res, next) => {
-
-  Reviews.find({}, (err, movieReviews) => {
-    assert.equal(null, err);
-
-    res.json(movieReviews);
+movieReviewRouter.post('/', authenticate, (req, res) => {
+  let review = new Review({
+    title: req.body.title,
+    score: req.body.score,
+    review: req.body.review,
+    _creator: req.user._id
   });
 
-});
-
-movieReviewRouter.post('/', (req, res, next) => {
-
-  Reviews.create(req.body, (err, movieReview) => {
-    assert.equal(null, err);
-
-    let id = movieReview._id;
-    res.end(`Movie review created with id: ${id}`);
-  });
-
-});
-
-movieReviewRouter.delete('/', (req, res, next) => {
-
-  Reviews.remove({}, (err, removedReviews) => {
-    assert.equal(null, err);
-    res.json(removedReviews);
-  });
-
-});
-
-movieReviewRouter.route('/:movieId')
-.get((req, res, next) => {
-
-  Reviews.findById(req.params.movieId, (err, movieReview) => {
-    assert.equal(null, err);
+  review.save().then(movieReview => {
     res.json(movieReview);
-  });
+  }).catch(err => res.status(400).json(err));
+});
 
-})
+movieReviewRouter.get('/', (req, res) => {
+  Review.find().then(reviews => {
+    res.json(reviews);
+  }).catch(err => res.status(400).json(err));
+});
 
-.put((req, res, next) => {
+movieReviewRouter.get('/:id', (req, res) => {
+  let id = req.params.id;
 
-  Reviews.findByIdAndUpdate(
-    req.params.movieId,
-    { $set: req.body },
-    { new: true },
-    (err, movieReview) => {
-      assert.equal(null, err);
+  if (!ObjectID.isValid(id)) {
+    return res.status(400).json({ message: "Review ID is not valid. Please input the correct ID." });
+  }
 
-      res.json(movieReview);
-    });
+  Review.findOne({ _id: id }).then(review => {
+    if (!review) {
+      res.status(404).json({ message: "Unable to find movie review."});
+    }
 
-})
+    res.json(review);
+  }).catch(err => res.status(400).json(err));
+});
 
-.delete((req, res, next) => {
+movieReviewRouter.delete('/:id', authenticate, (req, res) => {
+  let id = req.params.id;
 
-  Reviews.remove({ _id: req.params.movieId }, (err, removedReview) => {
-    assert.equal(null, err);
-    res.json(removedReview);
-    res.end(`Removed movie review with id: ${req.params.movieId}`)
-  });
+  if (!ObjectID.isValid(id)) {
+    return res.status(404).json({ message: "Review ID is not valid. Please input the correct ID"});
+  }
 
-})
+  Review.findOneAndUpdate({ _id: id }, { $set: body }, { new: true }).then(review => {
+    if (!review) {
+      return res.status(404).json({ message: "Review doesn't exist" });
+    }
+
+    res.json({ review });
+  }).catch(err => res.status(400).json(err));
+});
 
 module.exports = movieReviewRouter;
