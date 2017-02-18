@@ -1,9 +1,9 @@
-require('./config/config.js')
-const express = require('express'),
-      bodyParser = require('body-parser'),
-      morgan = require('morgan'),
-      mongoose = require('mongoose'),
-      cors = require('cors');
+require('./config/config.js');
+const express = require('express');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT;
@@ -13,7 +13,7 @@ const reviewRouter = require('./routes/reviewRouter');
 
 // App Setup | Middlewares
 app.use(morgan('combined'));
-app.use(bodyParser.json({ type: '*/*' }));
+app.use(bodyParser.json());
 // app.use(cors());
 
 // Routers
@@ -36,3 +36,5 @@ db.once('open', () => {
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}...`);
 });
+
+module.exports = {app};

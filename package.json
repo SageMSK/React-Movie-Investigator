@@ -4,7 +4,8 @@
   "description": "Standard CRUD app",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha tests/*.test.js"
   },
   "engines": {
     "node": "7.4.0"
@@ -12,7 +13,10 @@
   "author": "Min Soo Kim",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "expect": "^1.20.2",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0",
+    "supertest": "^3.0.0"
   },
   "dependencies": {
     "assert": "^1.4.1",

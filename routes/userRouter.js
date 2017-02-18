@@ -18,7 +18,7 @@ userRouter.post('/signup', (req, res) => {
 });
 
 userRouter.get('/me', authenticate, (req, res) => {
-  res.json(req.token);
+  res.json({ token: req.token});
 });
 
 userRouter.post('/login', (req, res) => {
