@@ -15,7 +15,7 @@ const usersMovieReviewRouter = require('./routes/reviewRouter');
 // App Setup | Middlewares
 app.use(morgan('combined'));
 app.use(bodyParser.json());
-// app.use(cors());
+app.use(cors());
 
 // Routers
 app.use('/user', userRouter);
