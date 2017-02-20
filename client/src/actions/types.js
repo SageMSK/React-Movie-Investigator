@@ -1,6 +1,7 @@
 // User Authentication
 export const AUTH_USER = 'auth_user';
 export const DE_AUTH_USER = 'de_auth_user';
+export const AUTH_ERROR = 'auth_error';
 
 // Movie Review Actions
 export const GET_ALL_REVIEWS = 'get_all_reviews';

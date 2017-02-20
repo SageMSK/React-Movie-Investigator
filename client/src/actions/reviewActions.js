@@ -1,56 +1,41 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
+
+import { headerConfig } from './index';
 import { GET_ALL_REVIEWS, GET_REVIEW } from './types';
-import toastr from 'toastr';
 
-const ROOT_URL = 'http://localhost:3090';
-
-export function getAllReviews() {
+export function getAllUsersReviews() {
   return function (dispatch) {
-    axios.get(`${ROOT_URL}/movies`)
+    axios.get('/movies', headerConfig)
       .then(response => {
         dispatch({ type: GET_ALL_REVIEWS, payload: response });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      }).catch(err => console.log(err.response.data));
   };
 }
 
-export function getReview(reviewId) {
+export function getUsersReview(reviewId) {
   return function (dispatch) {
-    axios.get(`${ROOT_URL}/movies/${reviewId}`)
+    axios.get(`/movies/${reviewId}`, headerConfig)
       .then(response => {
         dispatch({ type: GET_REVIEW, payload: response });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      }).catch(err => console.log(err.response.data));
   };
 }
 
 export function createNewReview({ title, score, review }) {
   return function (dispatch) {
-    axios.post(`${ROOT_URL}/movies`, { title, score, review })
-      .then(res => {
+    axios.post('/movies', { title, score, review }, headerConfig)
+      .then(response => {
         browserHistory.push('/movies');
-        toastr.success('New Review Created.');
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      }).catch(err => console.log(err.response.data));
   };
 }
 
 export function deleteReview(reviewId) {
   return function (dispatch) {
-    axios.delete(`${ROOT_URL}/movies/${reviewId}`)
-      .then(res => {
+    axios.delete(`${ROOT_URL}/movies/${reviewId}`, headerConfig)
+      .then(response => {
         browserHistory.push('/movies');
-        toastr.success('Review Successfully Deleted.');
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      }).catch(err => console.log(err.response.data));
   };
 }
