@@ -9,7 +9,8 @@ const app = express();
 const PORT = process.env.PORT;
 
 const userRouter = require('./routes/userRouter');
-const reviewRouter = require('./routes/reviewRouter');
+const publicReviewRouter = require('./routes/publicReviewRouter');
+const usersMovieReviewRouter = require('./routes/reviewRouter');
 
 // App Setup | Middlewares
 app.use(morgan('combined'));
@@ -18,7 +19,8 @@ app.use(bodyParser.json());
 
 // Routers
 app.use('/user', userRouter);
-app.use('/movies', reviewRouter);
+app.use('/movies', publicReviewRouter);
+app.use('/username/movies', usersMovieReviewRouter);
 
 // DB Setup
 // MongoDB/Mongoose on Windows 7
@@ -36,5 +38,3 @@ db.once('open', () => {
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}...`);
 });
-
-module.exports = {app};

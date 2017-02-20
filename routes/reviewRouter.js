@@ -2,11 +2,11 @@ const express = require('express');
 const _ = require('lodash');
 const { ObjectID } = require('mongodb');
 
-const movieReviewRouter = express.Router();
+const usersMovieReviewRouter = express.Router();
 const Review = require('../models/review');
 const authenticate = require('./../services/authenticate');
 
-movieReviewRouter.post('/', authenticate, (req, res) => {
+usersMovieReviewRouter.post('/', authenticate, (req, res) => {
   let review = new Review({
     title: req.body.title,
     score: req.body.score,
@@ -19,20 +19,20 @@ movieReviewRouter.post('/', authenticate, (req, res) => {
   }).catch(err => res.status(400).json(err));
 });
 
-movieReviewRouter.get('/', (req, res) => {
-  Review.find().then(reviews => {
+usersMovieReviewRouter.get('/', authenticate, (req, res) => {
+  Review.find({ _creator: req.user._id }).then(reviews => {
     res.json(reviews);
   }).catch(err => res.status(400).json(err));
 });
 
-movieReviewRouter.get('/:id', (req, res) => {
+usersMovieReviewRouter.get('/:id', authenticate, (req, res) => {
   let id = req.params.id;
 
   if (!ObjectID.isValid(id)) {
     return res.status(400).json({ message: "Review ID is not valid. Please input the correct ID." });
   }
 
-  Review.findOne({ _id: id }).then(review => {
+  Review.findOne({ _id: id, _creator: req.user._id }).then(review => {
     if (!review) {
       res.status(404).json({ message: "Unable to find movie review."});
     }
@@ -41,20 +41,20 @@ movieReviewRouter.get('/:id', (req, res) => {
   }).catch(err => res.status(400).json(err));
 });
 
-movieReviewRouter.delete('/:id', authenticate, (req, res) => {
+usersMovieReviewRouter.delete('/:id', authenticate, (req, res) => {
   let id = req.params.id;
 
   if (!ObjectID.isValid(id)) {
     return res.status(404).json({ message: "Review ID is not valid. Please input the correct ID"});
   }
 
-  Review.findOneAndUpdate({ _id: id }, { $set: body }, { new: true }).then(review => {
+  Review.findOneAndRemove({ _id: id, _creator: req.user._id }).then(review => {
     if (!review) {
       return res.status(404).json({ message: "Review doesn't exist" });
     }
 
-    res.json({ review });
+    res.json({ review, message: "Review was successfully deleted" });
   }).catch(err => res.status(400).json(err));
 });
 
-module.exports = movieReviewRouter;
+module.exports = usersMovieReviewRouter;
