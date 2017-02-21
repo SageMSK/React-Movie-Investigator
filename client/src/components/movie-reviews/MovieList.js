@@ -19,7 +19,7 @@ class MovieList extends Component {
         </li>
       )
     });
-  }  
+  }
 
   render() {
     return (
@@ -34,9 +34,7 @@ class MovieList extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    reviews: state.review.allReviews
-  }
+  return { reviews: state.review.allReviews };
 }
 
 export default connect(mapStateToProps, publicReviewsActions)(MovieList);

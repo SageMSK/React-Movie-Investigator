@@ -37,7 +37,7 @@ class Header extends Component {
           <div className="navbar-header">
             <Link to="/" className="navbar-brand">Movie Investigator</Link>
           </div>
-          <div id="navbar" className="navbar-collapse collapse">
+          <div id="navbar" className="navbar-collapse collapse navbar-right">
             <ul className="nav navbar-nav">
               <li className="nav-item">
                 <Link className="item-link" to="/movies">Movies</Link>

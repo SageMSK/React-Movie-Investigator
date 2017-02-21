@@ -12,9 +12,7 @@ class MovieDetails extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { review } = this.props;
-
     if (!review) {
       return <div>Loading...</div>
     }
@@ -32,9 +30,7 @@ class MovieDetails extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    review: state.review.singleReviewPost
-  }
+  return { review: state.review.singleReviewPost };
 }
 
 export default connect(mapStateToProps, publicReviewsActions)(MovieDetails);

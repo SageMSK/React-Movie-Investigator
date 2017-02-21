@@ -8,6 +8,7 @@ import ErrorPage from './components/common/ErrorPage';
 
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/Signup';
+import RequireAuth from './components/auth/RequireAuth';
 
 import MovieList from './components/movie-reviews/MovieList';
 import MovieDetails from './components/movie-reviews/MovieDetails';
@@ -23,8 +24,8 @@ export default (
     <Route path="signin" components={SignIn} />
     <Route path="movies" components={MovieList} />
     <Route path="movies/:id" components={MovieDetails} />
-    <Route path="username/movies" components={UserMovieList} />
-    <Route path="username/movies/newreview" components={CreateNewMovieReview} />
+    <Route path="username/movies" components={RequireAuth(UserMovieList)} />
+    <Route path="username/movies/newreview" components={RequireAuth(CreateNewMovieReview)} />
     <Route path="*" components={ErrorPage} />
   </Route>
 );
