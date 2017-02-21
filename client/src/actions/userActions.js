@@ -6,7 +6,7 @@ import { AUTH_USER, DE_AUTH_USER } from './types';
 
 export function signUpUser({ email, password }) {
   return function (dispatch) {
-    axios.post('/signup', { email, password }, headerConfig)
+    axios.post('/user/signup', { email, password }, headerConfig)
       .then(response => {
         headerConfig.headers['x-auth'] = response.data.token;
         localStorage.setItem('token', response.data.token);
@@ -18,7 +18,7 @@ export function signUpUser({ email, password }) {
 
 export function signInUser({ email, password }) {
   return function (dispatch) {
-    axios.post('/signin', { email, password }, headerConfig)
+    axios.post('/user/login', { email, password }, headerConfig)
       .then(response => {
         headerConfig.headers['x-auth'] = response.data.token;
         localStorage.setItem('token', response.data.token);

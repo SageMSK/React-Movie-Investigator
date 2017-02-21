@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import * as reviewActions from '../../actions/reviewActions';
+
+import * as publicReviewsActions from '../../actions/publicReviewsActions';
 
 class MovieList extends Component {
   componentWillMount() {
@@ -17,7 +18,7 @@ class MovieList extends Component {
           </Link>
         </li>
       )
-    })
+    });
   }  
 
   render() {
@@ -42,4 +43,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, reviewActions)(MovieList);
+export default connect(mapStateToProps, publicReviewsActions)(MovieList);
