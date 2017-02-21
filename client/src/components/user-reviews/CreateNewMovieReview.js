@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import * as reviewActions from '../../actions/reviewActions';
+import { Link } from 'react-router';
+
+import * as reviewActions from './../../actions/reviewActions';
 
 const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
   <div className="form-group">
@@ -36,19 +38,15 @@ const reviewField = ({ input, label, type, meta: { touched, error, warning } }) 
 
 let CreateNewMovieReview = (props) => {
   const { error, handleSubmit, pristine, reset, submitting } = props;
-
-  const createNewReviewPost = function (newReview) {
-    props.createNewReview(newReview);
-  }
+  const createNewReviewPost = (newReview) => props.createNewReview(newReview);
 
   return (
     <form onSubmit={handleSubmit(createNewReviewPost)}>
+      <Link to="username/movies">Back to List</Link>
       <Field name="title" component={renderField} type="text" label="Title" />
       <Field name="score" component={scoreField} type="number" label="Score" />
       <Field name="review" component={reviewField} type="textarea" label="Review" />
-
-      <button className="btn btn-primary" disabled={pristine || submitting} action="submit">Submit</button>
-      <button className="btn btn-default" disabled={pristine || submitting} type="button" onClick={reset}>Clear</button>
+      <button className="btn btn-primary" disabled={pristine || submitting} action="submit">Submit Review</button>
     </form>
   )
 }
@@ -57,9 +55,6 @@ CreateNewMovieReview = reduxForm({
   form: 'newreviewform'
 })(CreateNewMovieReview);
 
-CreateNewMovieReview = connect(
-  null,
-  reviewActions
-)(CreateNewMovieReview);
+CreateNewMovieReview = connect(null, reviewActions)(CreateNewMovieReview);
 
 export default CreateNewMovieReview;

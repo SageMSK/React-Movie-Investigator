@@ -24,11 +24,7 @@ class MovieList extends Component {
   render() {
     return (
       <div>
-        <div>
-          <Link to="movies/newreview" className="btn btn-primary">Add New Review</Link>
-        </div>
-
-        <p>This is the  the movie review main page.</p>
+        <h2>Movies</h2>
         <ul className="list-group">
           {this.renderReviews()}
         </ul>

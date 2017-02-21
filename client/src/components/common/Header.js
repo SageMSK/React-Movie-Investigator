@@ -15,10 +15,10 @@ class Header extends Component {
         <li className="dropdown" key={1}>
           <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Setting <span className="caret"></span></a>
           <ul className="dropdown-menu">
-            <li><a href="#">Placeholder</a></li>
+            <li><Link to="/username/movies">Account</Link></li>
             <li role="separator" className="divider"></li>
-            <li className="dropdown-header">Placeholder</li>
-            <li className="sign-out"><a onClick={this.logUserOut.bind(this)}>Sign Out</a></li>
+            <li className="dropdown-header"></li>
+            <li><a onClick={this.logUserOut.bind(this)} className="sign-out">Sign Out</a></li>
           </ul>
         </li>
       );

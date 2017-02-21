@@ -5,7 +5,8 @@ const Footer = () => {
 
   return (
     <footer>
-      <div className="row">
+      <div className="container">
+        <hr />
         <p className="footer-text">&copy; {currentYear} Movie Investigator, created by MSK</p>
       </div>
     </footer>

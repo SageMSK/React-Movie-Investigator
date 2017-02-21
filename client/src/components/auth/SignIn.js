@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import toastr from 'toastr';
 
 import * as userActions from './../../actions/userActions';
 
@@ -17,7 +18,10 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
 
 let SignIn = (props) => {
   const { error, handleSubmit, pristine, submitting, errorMessage } = props;
-  const LogInUser = (userInfo) => props.signInUser(userInfo);
+  const LogInUser = (userInfo) => {
+    props.signInUser(userInfo);
+    toastr.success('Successfully Logged In');
+  };
   const errorAlert = () => {
     if (errorMessage) {
       return (
