@@ -17,7 +17,7 @@ export function getSingleReview(reviewId) {
   return function (dispatch) {
     axios.get(`/movies/${reviewId}`, headerConfig)
       .then(response => {
-        dispatch({ type: GET_REVIEW, payload: resposne });
+        dispatch({ type: GET_REVIEW, payload: response });
       }).catch(err => console.log(err.response.data));
   };
 }

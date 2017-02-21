@@ -12,6 +12,7 @@ class MovieDetails extends Component {
   }
 
   render() {
+    console.log(this.props)
     const { review } = this.props;
 
     if (!review) {
