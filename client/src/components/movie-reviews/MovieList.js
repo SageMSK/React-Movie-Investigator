@@ -12,22 +12,24 @@ class MovieList extends Component {
   renderReviews() {
     return this.props.reviews.map(review => {
       return (
-        <li className="list-group-item" key={review._id}>
-          <Link to={`movies/${review._id}`}>
-            <p>{review.title}</p>
-          </Link>
-        </li>
-      )
+        <div className="col-sm-4 col-md-3" key={review._id}>
+          <div className="thumbnail">
+            <img src="" alt={review.title} />
+            <div className="caption">
+              <h3>{review.title}</h3>
+              <p><Link to={`movies/${review._id}`} className="btn btn-primary">Read More</Link></p>
+            </div>
+          </div>
+        </div>
+      );
     });
   }
 
   render() {
     return (
-      <div>
+      <div className="row">
         <h2>Movies</h2>
-        <ul className="list-group">
           {this.renderReviews()}
-        </ul>
       </div>
     );
   }

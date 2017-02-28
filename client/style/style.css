@@ -99,6 +99,17 @@ body {
   text-align: center;
 }
 
+/* MovieList (public)
+----------------------------------*/
+.thumbnail .caption h3 {
+  margin-top: 5px;
+  padding-left: 5px;
+}
+
+.thumbnail .caption p {
+  margin-bottom: 0px;
+}
+
 /* About Page
 ----------------------------------*/
 .about-page .about-page-title {
