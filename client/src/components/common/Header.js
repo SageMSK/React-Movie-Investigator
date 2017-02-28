@@ -32,7 +32,7 @@ class Header extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-inverse navbar-fixed-top">
+      <nav className="navbar navbar-default navbar-fixed-top">
         <div className="container">
           <div className="navbar-header">
             <Link to="/" className="navbar-brand">Movie Investigator</Link>

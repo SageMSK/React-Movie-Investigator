@@ -18,12 +18,14 @@ class MovieDetails extends Component {
     }
     
     return (
-      <div>
+      <div className="movie-review">
         <Link to="movies">Back to list</Link>
 
-        <h2>{review.title}</h2>
-        <h5>Score: {review.score}</h5>
-        <p>{review.review}</p>
+        <div className="content">
+          <h2>{review.title}</h2>
+          <h5>Score: {review.score}</h5>
+          <p>{review.review}</p>
+        </div>
       </div>
     );
   }
