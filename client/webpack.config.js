@@ -31,8 +31,8 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('css!sass')
-      }, // https://github.com/b82/webpack-basic-starter/blob/master/webpack.config.js
-      { // For uploading pictures thru SASS/CSS
+      },
+      { // For uploading iamges thru SASS/CSS
           test: /\.jpe?g$|\.gif$|\.png$/i,
           loader: "file-loader?name=/img/[name].[ext]"
       }
