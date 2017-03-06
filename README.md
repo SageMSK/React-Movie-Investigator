@@ -1,4 +1,4 @@
-# React-Redux-App
+# Movie Investigator (React-Redux-App)
 
 FRONT-END
 - React and Redux
