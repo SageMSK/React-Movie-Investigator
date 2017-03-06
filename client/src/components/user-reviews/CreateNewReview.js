@@ -36,7 +36,7 @@ const reviewField = ({ input, label, type, meta: { touched, error, warning } }) 
 );
 
 
-let CreateNewMovieReview = (props) => {
+let CreateNewReview = (props) => {
   const { error, handleSubmit, pristine, reset, submitting } = props;
   const createNewReviewPost = (newReview) => props.createNewReview(newReview);
 
@@ -51,10 +51,10 @@ let CreateNewMovieReview = (props) => {
   )
 }
 
-CreateNewMovieReview = reduxForm({
+CreateNewReview = reduxForm({
   form: 'newreviewform'
-})(CreateNewMovieReview);
+})(CreateNewReview);
 
-CreateNewMovieReview = connect(null, reviewActions)(CreateNewMovieReview);
+CreateNewReview = connect(null, reviewActions)(CreateNewReview);
 
-export default CreateNewMovieReview;
+export default CreateNewReview;

@@ -32,6 +32,7 @@ let SignUp = (props) => {
     <form onSubmit={handleSubmit(registerUser)} className="form-signin">
       <h2 className="form-signin-heading">Movie Investigator</h2>
       <p className="form-signup-message">Create your Investigator account</p>
+      <hr/>
       <Field name="email" component={renderField} type="email" label="Email" />
       <Field name="password" component={renderField} type="password" label="Password" />
       {errorAlert()}

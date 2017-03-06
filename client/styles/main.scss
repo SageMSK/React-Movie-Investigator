@@ -1,0 +1,30 @@
+/* Main App Base
+==================================*/
+
+body {
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 100px;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+// Header
+@import 'header';
+
+// HomePage
+@import 'homepage';
+
+// AboutPage
+@import 'aboutpage';
+
+// Contact Us
+@import 'contactus';
+
+// Sign-In-Up-Form
+@import 'sign-up-form';
+
+// Footer
+@import 'footer';

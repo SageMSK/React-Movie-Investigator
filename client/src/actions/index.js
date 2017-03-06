@@ -11,6 +11,6 @@ export let headerConfig = {
 export function errorMessage(message) {
   return {
     type: AUTH_ERROR,
-    payload: error
-  };
+    payload: message
+  }
 }

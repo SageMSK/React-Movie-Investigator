@@ -13,19 +13,19 @@ class Header extends Component {
     if (this.props.authenticated) {
       return (
         <li className="dropdown" key={1}>
-          <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Setting <span className="caret"></span></a>
+          <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SETTING <span className="caret"></span></a>
           <ul className="dropdown-menu">
-            <li><Link to="/username/movies">Account</Link></li>
+            <li><Link to="#">ACCOUNT</Link></li>
+            <li><Link to="username/movies">YOUR MOVIES</Link></li>
             <li role="separator" className="divider"></li>
-            <li className="dropdown-header"></li>
-            <li><a onClick={this.logUserOut.bind(this)} className="sign-out">Sign Out</a></li>
+            <li><Link to="/" onClick={this.logUserOut.bind(this)} className="sign-out">SIGN-OUT</Link></li>
           </ul>
         </li>
       );
     } else {
       return [
-        <li key={2}><Link to="/signin">Sign-in</Link></li>,
-        <li key={3}><Link to="/signup">Sign-up</Link></li>
+        <li key={2}><Link to="/signin">SIGN-IN</Link></li>,
+        <li key={3}><Link to="/signup" className="sign-up">SIGN-UP</Link></li>
       ];
     }
   }
@@ -35,18 +35,19 @@ class Header extends Component {
       <nav className="navbar navbar-default navbar-fixed-top">
         <div className="container">
           <div className="navbar-header">
-            <Link to="/" className="navbar-brand">Movie Investigator</Link>
+            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span className="sr-only">Toggle navigation</span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+            </button>
+            <Link className="navbar-brand" to="/">Movie Investigator</Link>
           </div>
-          <div id="navbar" className="navbar-collapse collapse navbar-right">
-            <ul className="nav navbar-nav">
-              <li className="nav-item">
-                <Link className="item-link" to="/movies">Movies</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="item-link" to="/about">About</Link>
-              </li>
-            </ul>
+
+          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav navbar-right">
+              <li><Link to="/movies">MOVIES</Link></li>
+              <li><Link to="/about">ABOUT</Link></li>
               {this.renderUserStatus()}
             </ul>
           </div>

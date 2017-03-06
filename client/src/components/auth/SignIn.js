@@ -35,6 +35,7 @@ let SignIn = (props) => {
   return (
     <form onSubmit={handleSubmit(LogInUser)} className="form-signin">
       <h2 className="form-signin-heading">Movie Investigator</h2>
+      <hr/>
       <Field name="email" component={renderField} type="email" label="Email" />
       <Field name="password" component={renderField} type="password" label="Password" />
       {errorAlert()}

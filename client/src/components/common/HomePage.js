@@ -4,32 +4,81 @@ import { Link } from 'react-router';
 class HomePage extends Component {
   render() {
     return (
-      <div>
-        <div className="jumbotron">
-          <div className="container">
-            <h1>Welcome!</h1>
-            <p>Start Reading!</p>
-            <p><Link className="btn btn-primary btn-lg" to="/movies">Reviews &raquo;</Link></p>
+      <div id="home-page">
+        <div className="background-picture">
+          <div className="background-color">
+            <div className="container">
+              <div className="message text-center">
+                <h2>GENUINE & QUALITY</h2>
+              </div>
+              <Link className="btn" to="/movies">Start Reading</Link>
+            </div> 
           </div>
         </div>
 
-        <div className="container three-info">
+        <div id="reviews" className="container three-info">
           <div className="row">
-            <h2 className="three-info-title">Our Mission</h2>
+            <h2 className="row-title">Our Reviews</h2>
+            <hr className="bottom-line" />
             <div className="col-md-4">
               <i className="fa fa-handshake-o fa-5x" aria-hidden="true"></i>
-              <h2 className="three-info-individual-title">Honesty</h2>
-              <p>No sponsors or influences! We are a small group of reviewers. All reviews are our geniune views of the movies.</p>
+              <h3 className="three-info-individual-title">Honesty</h3>
+              <p>Donec et lectus bibendum dolor dictum auctor in ac erat. Vestibulum egestas sollicitudin metus non urna in eros tincidunt convallis id id nisi in interdum.</p>
             </div>
             <div className="col-md-4">
               <i className="fa fa-search fa-5x" aria-hidden="true"></i>
-              <h2 className="three-info-individual-title">Thorough</h2>
-              <p>All our star reviewers have watched the movie at least two times. Any movies of series have been thoroughly watched as well.</p>
+              <h3 className="three-info-individual-title">Thorough</h3>
+              <p>Donec et lectus bibendum dolor dictum auctor in ac erat. Vestibulum egestas sollicitudin metus non urna in eros tincidunt convallis id id nisi in interdum.</p>
            </div>
             <div className="col-md-4">
               <i className="fa fa-calendar fa-5x" aria-hidden="true"></i>
-              <h2 className="three-info-individual-title">Up to Date</h2>
-              <p>As we are movie lovers, we are always eager to watch major release movies on the night of or the day after.</p>
+              <h3 className="three-info-individual-title">Up to Date</h3>
+              <p>Donec et lectus bibendum dolor dictum auctor in ac erat. Vestibulum egestas sollicitudin metus non urna in eros tincidunt convallis id id nisi in interdum.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="critics" className="reviewer-info">
+          <div className="container">
+            <div className="row">
+              <h2 className="row-title">Our Top Critics</h2>
+              <hr className="bottom-line" />
+              <div className="col-md-4">
+                <img src="./../../img/user1.png" alt="user icon" className="user-picture" />
+                <h3 className="reviewer-individual-name">John Doe</h3>
+                <p>Donec et lectus bibendum dolor dictum auctor in ac erat. Vestibulum egestas sollicitudin metus non urna in eros tincidunt convallis id id nisi in interdum.</p>
+              </div>
+              <div className="col-md-4">
+                <img src="./../../img/user2.png" alt="user icon" className="user-picture" />
+                <h3 className="reviewer-individual-name">Jane Smith</h3>
+                <p>Donec et lectus bibendum dolor dictum auctor in ac erat. Vestibulum egestas sollicitudin metus non urna in eros tincidunt convallis id id nisi in interdum.</p>
+             </div>
+              <div className="col-md-4">
+                <img src="./../../img/user1.png" alt="user icon" className="user-picture" />
+                <h3 className="reviewer-individual-name">Ricky Bobby</h3>
+                <p>Donec et lectus bibendum dolor dictum auctor in ac erat. Vestibulum egestas sollicitudin metus non urna in eros tincidunt convallis id id nisi in interdum.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="user-response">
+          <div className="container">
+            <div className="row">
+              <h2 className="row-title">See What Our Users Are Saying!</h2>
+              <hr className="bottom-line" />
+              <div className="col-md-6">
+                <div className="comment-box">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam accusamus iste voluptas eaque rem, odit praesentium voluptatem voluptate reprehenderit possimus libero aut dolorum hic voluptates earum fugiat officia ducimus nihil.</p>
+                  <p>Adam West - User</p>
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="comment-box">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi beatae expedita quibusdam quo sunt facere adipisci fugiat temporibus provident, enim magnam reprehenderit voluptates eligendi laborum rem laudantium nemo cum sapiente!</p>
+                  <p>Adam Jensen - User</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

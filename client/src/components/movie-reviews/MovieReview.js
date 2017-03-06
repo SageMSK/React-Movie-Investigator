@@ -6,7 +6,7 @@ import toastr from 'toastr';
 
 import * as publicReviewsActions from '../../actions/publicReviewsActions';
 
-class MovieDetails extends Component {
+class MovieReview extends Component {
   componentWillMount() {
     this.props.getSingleReview(this.props.params.id);
   }
@@ -35,4 +35,4 @@ function mapStateToProps(state) {
   return { review: state.review.singleReviewPost };
 }
 
-export default connect(mapStateToProps, publicReviewsActions)(MovieDetails);
+export default connect(mapStateToProps, publicReviewsActions)(MovieReview);

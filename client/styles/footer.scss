@@ -1,0 +1,60 @@
+/* Footer
+==================================*/
+
+// Variables
+$main-color:       #EEEEEE;
+$facebook-color:   #3b5998;
+$twitter-color:    #00aced;
+$instagram-color:  #fccc63;
+
+// Mixins
+@mixin hover-color ($hover-color) {
+  &:hover {
+    color: $hover-color;
+  }
+}
+
+// Styles
+#footer {
+  background-color: #263238;
+  color: $main-color;
+  text-align: center;
+
+  .container {
+    padding-top: 50px;
+    padding-bottom: 15px;
+  }
+
+  .social-media {
+    padding-bottom: 10px;
+    p {
+      font-size: 36px;
+      font-family: 'Ranga', cursive;
+    }
+
+    .social-media-list {
+      display: block;
+      padding: 0;
+
+      li {
+        display: inline;
+        padding-left: 5px;
+        padding-right: 5px;
+        font-size: 28px;
+
+        a {
+          color: $main-color;
+        }
+        .facebook {
+          @include hover-color ($facebook-color);
+        }
+        .twitter {
+          @include hover-color ($twitter-color);
+        }
+        .instagram {
+          @include hover-color ($instagram-color);
+        }
+      }
+    }
+  }
+}

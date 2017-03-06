@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 import * as publicReviewsActions from '../../actions/publicReviewsActions';
 
-class MovieList extends Component {
+class MovieReviewList extends Component {
   componentWillMount() {
     this.props.getAllReviews();
   }
@@ -39,4 +39,4 @@ function mapStateToProps(state) {
   return { reviews: state.review.allReviews };
 }
 
-export default connect(mapStateToProps, publicReviewsActions)(MovieList);
+export default connect(mapStateToProps, publicReviewsActions)(MovieReviewList);

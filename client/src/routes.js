@@ -7,25 +7,25 @@ import AboutPage from './components/common/AboutPage';
 import ErrorPage from './components/common/ErrorPage';
 
 import SignIn from './components/auth/SignIn';
-import SignUp from './components/auth/Signup';
+import SignUp from './components/auth/SignUp';
 import RequireAuth from './components/auth/RequireAuth';
 
-import MovieList from './components/movie-reviews/MovieList';
-import MovieDetails from './components/movie-reviews/MovieDetails';
+import MovieReviewList from './components/movie-reviews/MovieReviewList';
+import MovieReview from './components/movie-reviews/MovieReview';
 
 import UserMovieList from './components/user-reviews/UserMovieList';
-import CreateNewMovieReview from './components/user-reviews/CreateNewMovieReview';
+import CreateNewReview from './components/user-reviews/CreateNewReview';
 
 export default (
   <Route path="/" components={App}>
     <IndexRoute components={HomePage} />
     <Route path="about" components={AboutPage} />
-    <Route path="signup" components={SignUp} />
     <Route path="signin" components={SignIn} />
-    <Route path="movies" components={MovieList} />
-    <Route path="movies/:id" components={MovieDetails} />
-    <Route path="username/movies" components={RequireAuth(UserMovieList)} />
-    <Route path="username/movies/newreview" components={RequireAuth(CreateNewMovieReview)} />
+    <Route path="signup" components={SignUp} />
+    <Route path="movies" components={MovieReviewList} />
+    <Route path="movies/:id" components={MovieReview} />
+    <Route path="username/movies" components={UserMovieList} />
+    <Route path="username/movies/createnew" components={CreateNewReview} />
     <Route path="*" components={ErrorPage} />
   </Route>
 );

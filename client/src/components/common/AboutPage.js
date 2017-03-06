@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class AboutPage extends Component {
-  render() {
-    return (
-      <div className="about-page">
-        <h1 className="about-page-title">Movie Investigator</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce commodo molestie bibendum. Fusce accumsan lobortis condimentum. Nulla et arcu eu ligula tincidunt condimentum. Nulla nec mauris ultrices libero rutrum efficitur sed non ipsum. Sed sodales lacus mollis dui tristique, vel lobortis est vestibulum. Etiam lobortis finibus ornare. Duis efficitur aliquam massa et gravida. Nullam quis vulputate diam, eu lobortis risus. Phasellus sit amet lacinia diam. Nam gravida vehicula scelerisque.</p>
-        <p>Donec sed purus id dui ullamcorper euismod. Duis et rhoncus mauris, at euismod ligula. Maecenas cursus dui in augue facilisis fermentum eget a massa. Maecenas blandit justo a risus commodo, faucibus suscipit tellus porttitor. Sed sit amet orci vestibulum neque iaculis faucibus a lacinia erat. Nullam dignissim sodales elit efficitur lacinia. Donec sollicitudin aliquam dui, ut cursus lacus scelerisque nec. Sed commodo aliquet dapibus. Aenean sed porttitor arcu. Nullam molestie in leo vitae euismod. Nullam egestas enim gravida pharetra vulputate. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam imperdiet aliquet congue. Nunc quis eleifend lectus. Aenean id hendrerit neque. Duis facilisis id augue sed vestibulum.</p>
-        <p>Donec ultrices, neque quis porttitor ullamcorper, orci tortor lobortis magna, tristique aliquet arcu orci vel ipsum. Duis blandit eros a enim vehicula malesuada. Aliquam sagittis augue a quam luctus posuere. Duis vel mauris vitae nisi laoreet commodo vitae vulputate dolor. Suspendisse at aliquam dolor. Etiam auctor congue sem ut bibendum. Quisque nec molestie diam. Pellentesque viverra pharetra sollicitudin. Vestibulum euismod dui a neque tempor, id fermentum dolor posuere. Phasellus bibendum volutpat mi, in aliquam orci pulvinar a. Nullam rutrum porta dui quis facilisis. Morbi accumsan, augue vel suscipit convallis, turpis dolor aliquet sem, id fringilla quam quam eget elit. Maecenas eget lobortis mi, ut iaculis sapien.</p>
-      </div>
-    );
-  }
-}
+const AboutPage = (props) => {
+  return (
+    <div className="container" id="about-page">
+      <h1>Our Story</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel ex non ipsum faucibus dignissim. Ut vulputate nibh ac mollis fringilla. Quisque elementum arcu molestie, sagittis lacus vitae, tempus justo. Integer ligula ex, congue sit amet ligula ut, condimentum mollis sem. Sed viverra est ex. Nulla facilisi. Fusce metus turpis, aliquet at blandit in, viverra porta lacus. Integer venenatis arcu id metus posuere volutpat. Aliquam vehicula gravida tellus eu pharetra. Aenean accumsan quam felis, ac viverra ex faucibus sed. Vivamus volutpat volutpat magna, id vestibulum magna. Nullam semper sodales turpis nec eleifend. Donec sit amet nibh in dolor suscipit iaculis id eget ipsum. Donec dui ligula, vehicula cursus leo sit amet, facilisis vestibulum nisl. Vivamus gravida sapien faucibus ornare tristique.</p>
+      <p>Fusce finibus sed libero a rhoncus. Cras sed ex euismod, mollis quam sed, posuere mi. Vivamus quis ante elit. Donec nec leo at orci semper porta. Integer volutpat in lorem vel luctus. Donec id quam erat. Nulla facilisi. Praesent sit amet felis et dolor venenatis varius vitae ac eros. Sed facilisis vestibulum ante, vitae efficitur nunc sagittis quis.</p>
+      <p>Suspendisse dignissim urna vitae condimentum commodo. Proin sit amet gravida risus. Suspendisse nec pulvinar dolor, eu mattis lorem. Fusce in tortor quis nunc condimentum pretium vel at ipsum. Duis dapibus purus neque, sed dignissim leo tempus ut. Cras elementum velit et erat consectetur ullamcorper. Vestibulum quis enim id dui varius mollis. Curabitur sed justo iaculis, porta sem vel, lacinia dolor. Vestibulum pulvinar nunc sit amet ante faucibus pulvinar eget sollicitudin enim. Sed vulputate, magna et porta sollicitudin, ligula erat vehicula nulla, et vestibulum neque augue ac lacus.</p>
+    </div>
+  );
+};
 
 export default AboutPage;
