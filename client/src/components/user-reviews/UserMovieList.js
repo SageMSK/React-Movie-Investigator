@@ -13,7 +13,7 @@ class UserMovieList extends Component {
     return this.props.reviews.map(review => {
       return (
         <li className="list-group-item" key={review._id}>
-          <Link to={`movies/${review._id}`}>
+          <Link to={`/movies/${review._id}`}>
             <p>{review.title}</p>
           </Link>
         </li>
@@ -28,9 +28,9 @@ class UserMovieList extends Component {
     }
 
     return (
-      <div>
+      <div id="user-movie-list" className="container">
         <h1>Your Movie Reviews</h1>
-        <Link to="username/movies/newreview">Add a review</Link>
+        <Link to="/username/movies/createnew" className="btn">Add a review</Link>
         <ul className="list-group">
           {this.renderAllUserReview()}
         </ul>

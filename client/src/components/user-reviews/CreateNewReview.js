@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import TinyMCE from 'react-tinymce';
 
 import * as reviewActions from './../../actions/reviewActions';
 
@@ -41,12 +42,12 @@ let CreateNewReview = (props) => {
   const createNewReviewPost = (newReview) => props.createNewReview(newReview);
 
   return (
-    <form onSubmit={handleSubmit(createNewReviewPost)}>
-      <Link to="username/movies">Back to List</Link>
+    <form onSubmit={handleSubmit(createNewReviewPost)} className="container">
+      <Link to="/username/movies" className="btn">Back to List</Link>
       <Field name="title" component={renderField} type="text" label="Title" />
       <Field name="score" component={scoreField} type="number" label="Score" />
       <Field name="review" component={reviewField} type="textarea" label="Review" />
-      <button className="btn btn-primary" disabled={pristine || submitting} action="submit">Submit Review</button>
+      <button className="btn" disabled={pristine || submitting} action="submit">Submit Review</button>
     </form>
   )
 }

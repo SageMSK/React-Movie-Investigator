@@ -16,7 +16,7 @@ class Header extends Component {
           <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SETTING <span className="caret"></span></a>
           <ul className="dropdown-menu">
             <li><Link to="#">ACCOUNT</Link></li>
-            <li><Link to="username/movies">YOUR MOVIES</Link></li>
+            <li><Link to="/username/movies">YOUR MOVIES</Link></li>
             <li role="separator" className="divider"></li>
             <li><Link to="/" onClick={this.logUserOut.bind(this)} className="sign-out">SIGN-OUT</Link></li>
           </ul>

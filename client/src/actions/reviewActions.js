@@ -31,6 +31,15 @@ export function createNewReview({ title, score, review }) {
   };
 }
 
+export function editReview({ title, score, review }) {
+  return function (dispatch) {
+    axios.patch('username/movies', { title, score, reivew }, headerConfig)
+      .then(response => {
+        browserHistory.push('/movies');
+      }).catch(err => console.log(err.response.data));
+  }
+}
+
 export function deleteReview(reviewId) {
   return function (dispatch) {
     axios.delete(`username/movies/${reviewId}`, headerConfig)

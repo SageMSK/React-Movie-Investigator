@@ -18,11 +18,11 @@ class MovieReview extends Component {
     }
     
     return (
-      <div className="movie-review">
-        <Link to="movies">Back to list</Link>
+      <div id="movie-review" className="container movie-review">
+        <Link to="/movies" className="btn">Back to list</Link>
 
         <div className="content">
-          <h2>{review.title}</h2>
+          <h2>{review.title.toUpperCase()}</h2>
           <h5>Score: {review.score}</h5>
           <p>{review.review}</p>
         </div>

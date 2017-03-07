@@ -1,5 +1,6 @@
 /* Main App Base
 ==================================*/
+$main-color: #1976D2;
 
 body {
   font-size: 16px;
@@ -10,6 +11,21 @@ body {
 ol, ul {
   list-style: none;
 }
+
+/* Buttons
+==================================*/
+  .btn {
+    font-size: 14px;
+    background-color: $main-color;
+    color: #FFFFFF;
+    border-radius: 20px;
+
+    &:hover {
+      background-color: #FFFFFF;
+      color: $main-color;
+      border: 1px solid $main-color;
+    }
+  }
 
 // Header
 @import 'header';
@@ -25,6 +41,15 @@ ol, ul {
 
 // Sign-In-Up-Form
 @import 'sign-up-form';
+
+// Movie-Review-List
+@import 'movie-review-list';
+
+// Movie-Review
+@import 'movie-review';
+
+// User's Movie-Review-List
+@import 'user-movie-list';
 
 // Footer
 @import 'footer';

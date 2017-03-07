@@ -14,10 +14,10 @@ class MovieReviewList extends Component {
       return (
         <div className="col-sm-4 col-md-3" key={review._id}>
           <div className="thumbnail">
-            <img src="" alt={review.title} />
+            <img src="" alt={review.title.toUpperCase()} />
             <div className="caption">
               <h3>{review.title}</h3>
-              <p><Link to={`movies/${review._id}`} className="btn btn-primary">Read More</Link></p>
+              <p><Link to={`/movies/${review._id}`} className="btn">Read More <i className="fa fa-long-arrow-right" aria-hidden="true"></i></Link></p>
             </div>
           </div>
         </div>
@@ -27,9 +27,11 @@ class MovieReviewList extends Component {
 
   render() {
     return (
-      <div className="row">
-        <h2>Movies</h2>
-          {this.renderReviews()}
+      <div id="movie-review-list" className="container">
+        <div className="row">
+          <h2 className="title">Movies</h2>
+            {this.renderReviews()}
+        </div>
       </div>
     );
   }

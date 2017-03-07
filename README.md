@@ -2,7 +2,7 @@
 
 FRONT-END
 - React and Redux
-- SASS
+- SASS, Bootstrap
 
 BACK-END
 - Node.js with Express.js on the backend

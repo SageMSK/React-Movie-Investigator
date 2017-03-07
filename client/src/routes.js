@@ -26,6 +26,7 @@ export default (
     <Route path="movies/:id" components={MovieReview} />
     <Route path="username/movies" components={UserMovieList} />
     <Route path="username/movies/createnew" components={CreateNewReview} />
+    <Route path="username/movies/editreview" components={EditMovieReview} />
     <Route path="*" components={ErrorPage} />
   </Route>
 );
