@@ -48,6 +48,7 @@ class Header extends Component {
             <ul className="nav navbar-nav navbar-right">
               <li><Link to="/movies">MOVIES</Link></li>
               <li><Link to="/about">ABOUT</Link></li>
+              <li><Link to="/contactus">CONTACT US</Link></li>
               {this.renderUserStatus()}
             </ul>
           </div>

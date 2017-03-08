@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import TinyMCE from 'react-tinymce';
 
 import * as reviewActions from './../../actions/reviewActions';
 

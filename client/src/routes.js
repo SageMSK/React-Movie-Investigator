@@ -4,6 +4,7 @@ import { Route, IndexRoute } from 'react-router';
 import App from './components/app';
 import HomePage from './components/common/HomePage';
 import AboutPage from './components/common/AboutPage';
+import ContactUs from './components/common/ContactUs';
 import ErrorPage from './components/common/ErrorPage';
 
 import SignIn from './components/auth/SignIn';
@@ -20,13 +21,13 @@ export default (
   <Route path="/" components={App}>
     <IndexRoute components={HomePage} />
     <Route path="about" components={AboutPage} />
+    <Route path="contactus" components={ContactUs} />
     <Route path="signin" components={SignIn} />
     <Route path="signup" components={SignUp} />
     <Route path="movies" components={MovieReviewList} />
     <Route path="movies/:id" components={MovieReview} />
     <Route path="username/movies" components={UserMovieList} />
     <Route path="username/movies/createnew" components={CreateNewReview} />
-    <Route path="username/movies/editreview" components={EditMovieReview} />
     <Route path="*" components={ErrorPage} />
   </Route>
 );

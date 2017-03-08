@@ -16,7 +16,7 @@ const Footer = (props) => {
         </div>
 
         <hr />
-        <p>&copy; {currentYear} Movie Investigator, Designed by MSK</p>
+        <p className="copyright">&copy; {currentYear} Movie Investigator, MSK</p>
       </div>
     </footer>
   );
