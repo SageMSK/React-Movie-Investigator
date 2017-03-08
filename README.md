@@ -10,4 +10,4 @@ BACK-END
 
 
 Preview
-![movie-invest](https://cloud.githubusercontent.com/assets/10094893/23620054/a5f09dbe-0263-11e7-8701-77fe264b24f3.png)
+![movie-invest](https://cloud.githubusercontent.com/assets/10094893/23712387/c094d87c-03f0-11e7-8db1-4cbf91f02b50.png)
