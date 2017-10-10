@@ -1,5 +1,7 @@
 # Movie Tracking App
 
+This application allows users to store and keep track of all the movies they have watched. They can leave their comment on whether they enjoyed the movie or not and their ratings of the movie.
+
 ## Getting Started
 
 This project uses MongoDB. If you don't have MongoDB installed, you can check the link [HERE](https://www.mongodb.com/download-center?jmp=homepage#community). You can also check the installation and setup [HERE](https://docs.mongodb.com/manual/administration/install-community/).
@@ -19,6 +21,8 @@ This will start both webpack for front-end and express backend server
 If you wish to just start the express app (back-end) then just simply use
 
 > npm run server
+
+## Technologies used
 
 FRONT-END
 - React

@@ -1,21 +1,19 @@
 /* eslint-disable no-console */
-const dotEnv = require('dotenv');
 const mongoose = require('mongoose');
 
 const app = require('./server/app');
 
 // Import our local environmental variables from our variables.env file
-if (process.env.NODE_ENV === 'development') {
-  dotEnv.config({ path: 'variables' });
-}
+require('dotenv').config({ path: 'variables.env' });
 
 /**
  * MongoDB/Mongoose Config
  * For Local
  *  set DATABASE to mongodb://localhost:27017/movietrackingapp in variables.env
  */
-mongoose.Promise = global.Promise; // Use native ES6 promises
 mongoose.connect(process.env.DATABASE, { useMongoClient: true });
+mongoose.Promise = global.Promise; // Use native ES6 promises
+
 mongoose.connection
   .once('open', () => console.log('MongoDB Sucessfully Running.'))
   .on('error', (err) => { throw err; });

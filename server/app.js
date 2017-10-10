@@ -40,8 +40,8 @@ app.get('/', (req, res) => {
 });
 
 // Routes
-app.use('/api/v1/user', userRoutes);
-app.use('/api/v1/movie', movieRoutes);
+app.use('/v1/user', userRoutes);
+app.use('/v1/movie', movieRoutes);
 
 // Error Handlers
 app.use(errorHandlers.notFound);
