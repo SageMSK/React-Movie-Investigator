@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon ./server.js",
-    "dev": "webpack-dev-server --open",
+    "assets": "webpack-dev-server --open",
+    "dev": "cross-env npm run server npm run assets --names Server",
     "build": "cross-env NODE_ENV=production webpack -p"
   },
   "author": "Min Soo Kim (http://github.com/sagemsk)",

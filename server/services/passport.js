@@ -27,8 +27,8 @@ const passportLocalLogin = new LocalStrategy(localLoginOptions, async (email, pa
 });
 
 const jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromAuthHeader('authorization'),
-  secretOrKey: process.env.secretOrKey,
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  secretOrKey: process.env.SECRET,
 };
 
 const passportJWTStrategy = new JWTStrategy(jwtOptions, async (payload, done) => {

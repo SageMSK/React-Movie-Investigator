@@ -45,7 +45,7 @@ exports.updateMovieInfo = async (req, res) => {
 
     await Movie.findOneAndUpdate(
       { _id: movie._id },
-      { $set: req.body },
+      req.body,
       { new: true, runValidators: true }, // return the updated info instead of the previous
     ).exec();
 

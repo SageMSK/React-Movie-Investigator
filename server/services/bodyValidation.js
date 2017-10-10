@@ -11,7 +11,7 @@ exports.validateBody = schema => (req, res, next) => {
 exports.signUp = Joi.object().options({ abortEarly: false }).keys({
   email: Joi.string().email().required(),
   password: Joi.string().min(6).required(),
-  confirmPassword: Joi.string().min(6).required(),
+  confirm_password: Joi.string().min(6).required(),
 });
 
 exports.createMovie = Joi.object().options({ abortEarly: false }).keys({

@@ -41,14 +41,13 @@ const UserSchema = new Schema({
   timestamps: true, // adds createdAt and updatedAt
 });
 
-// Plugins
 // Clearer error message for schema values with unique keys set to true
 UserSchema.plugin(uniqueValidator, { message: '{VALUE} is already taken.' });
 
 // Hash our password before saving user to database
 UserSchema.pre('save', async function bycryptPassword(next) {
   const user = this;
-  const SALT_FACTOR = 15;
+  const SALT_FACTOR = 10;
 
   // if the password did not change, then skip it
   if (!user.isModified('password')) return next();
@@ -67,9 +66,6 @@ UserSchema.pre('save', async function bycryptPassword(next) {
   }
 });
 
-/**
- * METHODS
- */
 UserSchema.methods = {
   async comparePassword(candidatePassword) {
     try {
@@ -83,7 +79,7 @@ UserSchema.methods = {
     return jwt.sign({
       _id: this._id,
       test: 'test',
-    }, process.env.secretOrKey);
+    }, process.env.SECRET);
   },
   sentTokenToClient() {
     return {
@@ -93,4 +89,4 @@ UserSchema.methods = {
   },
 };
 
-module.exports = mongoose.model('Movie', UserSchema);
+module.exports = mongoose.model('User', UserSchema);

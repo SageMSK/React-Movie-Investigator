@@ -37,7 +37,6 @@ const MovieSchema = new Schema({
   timestamps: true, // adds createdAt and updatedAt
 });
 
-// Plugins
 // Clearer error message for schema values with unique keys set to true
 MovieSchema.plugin(uniqueValidator, { message: '{VALUE} is already taken.' });
 
