@@ -2,8 +2,9 @@ const express = require('express');
 
 const movieRouter = express.Router();
 const movieController = require('./movie.controller');
+const { validateBody, createMovie } = require('./../services/bodyValidation');
 
-movieRouter.post('/create', movieController.createMovieItem);
+movieRouter.post('/create', validateBody(createMovie), movieController.createMovieItem);
 movieRouter.get('/all', movieController.getAllMovies);
 movieRouter.get('/:id', movieController.getSingleMovie);
 movieRouter.patch('/update/:id', movieController.updateMovieInfo);

@@ -41,5 +41,3 @@ BACK-END
 ## Image Previews of the project (subject to change)
 
 Image of HTML password reset email
-
-![movie-invest-full](https://cloud.githubusercontent.com/assets/10094893/23818490/b5e95eea-05c9-11e7-997f-13b84a88e6a6.png)
