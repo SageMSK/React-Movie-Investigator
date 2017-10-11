@@ -18,3 +18,7 @@ exports.createMovie = Joi.object().options({ abortEarly: false }).keys({
   title: Joi.string().required(),
   rating: Joi.number().required(),
 });
+
+exports.passwordResetEmail = Joi.object().keys({
+  email: Joi.string().email().required(),
+});

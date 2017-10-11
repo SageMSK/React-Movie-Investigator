@@ -27,7 +27,7 @@ const passportLocalLogin = new LocalStrategy(localLoginOptions, async (email, pa
 });
 
 const jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(), // Authorization header
   secretOrKey: process.env.SECRET,
 };
 
@@ -49,7 +49,3 @@ passport.use(passportJWTStrategy);
 
 exports.localLogin = passport.authenticate('local', { session: false });
 exports.requireAuthToken = passport.authenticate('jwt', { session: false });
-
-// We need to serialize and deserialize the user since we are not using sessions.
-// passport.serializeUser((user, done) => done(null, user._id));
-// passport.deserializeUser((id, done) => User.findById(id, (err, user) => done(err, user)));

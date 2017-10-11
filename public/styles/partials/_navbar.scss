@@ -1,0 +1,19 @@
+/* ===================
+Navbar
+====================== */
+.navbar {
+  &__list {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__item {
+    margin: 0 15px;
+    font-size: 1.2rem;
+  }
+}
+
+.active {
+  font-weight: bold;
+  color: blue;
+}
