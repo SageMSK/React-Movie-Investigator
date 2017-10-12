@@ -43,13 +43,13 @@ exports.updateMovieInfo = async (req, res) => {
 
     // TODO: Check if the user logged in matches the user of the movie found
 
-    await Movie.findOneAndUpdate(
+    const updatedMovieInfo = await Movie.findOneAndUpdate(
       { _id: movie._id },
       req.body,
       { new: true, runValidators: true }, // return the updated info instead of the previous
     ).exec();
 
-    return res.status(200).json(movie);
+    return res.status(200).json(updatedMovieInfo);
   } catch (error) {
     return res.status(400).json(error);
   }

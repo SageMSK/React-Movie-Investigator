@@ -6,8 +6,8 @@ const userResetEmailController = require('./user.resetEmail');
 const { localLogin } = require('./../services/passport');
 const { validateBody, signUp, passwordResetEmail } = require('./../services/bodyValidation');
 
-userRouter.post('/create', validateBody(signUp), userController.signUp);
-userRouter.post('/login', localLogin, userController.signIn);
+userRouter.post('/signup', validateBody(signUp), userController.signUp);
+userRouter.post('/signin', localLogin, userController.signIn);
 
 // password update
 userRouter.post('/passwordreset', validateBody(passwordResetEmail), userResetEmailController.sendPWResetEmail);

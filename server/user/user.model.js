@@ -20,23 +20,23 @@ const UserSchema = new Schema({
       },
       message: '{VALUE} is not a valid email.',
     },
-    firstName: {
-      type: String,
-      trim: true,
-    },
-    lastName: {
-      type: String,
-      trim: true,
-    },
-    password: {
-      type: String,
-      trim: true,
-      minlength: [6, 'Password needs to be at least 6 characters.'],
-      required: [true, 'Password required'],
-    },
-    resetPasswordToken: String,
-    resetPasswordExpires: Date,
   },
+  firstName: {
+    type: String,
+    trim: true,
+  },
+  lastName: {
+    type: String,
+    trim: true,
+  },
+  password: {
+    type: String,
+    trim: true,
+    minlength: [6, 'Password needs to be at least 6 characters.'],
+    required: [true, 'Password required'],
+  },
+  resetPasswordToken: String,
+  resetPasswordExpires: Date,
 }, {
   timestamps: true, // adds createdAt and updatedAt
 });
