@@ -10,7 +10,7 @@
     "start": "node server.js",
     "server": "nodemon ./server.js",
     "assets": "webpack-dev-server --open",
-    "dev": "cross-env npm run server npm run assets --names Server",
+    "dev": "concurrently \"npm run server\" \"npm run assets\" --names \"Server\"",
     "build": "cross-env NODE_ENV=production webpack -p"
   },
   "author": "Min Soo Kim (http://github.com/sagemsk)",
@@ -79,6 +79,7 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
+    "concurrently": "^3.5.0",
     "css-loader": "^0.28.7",
     "eslint": "^4.8.0",
     "eslint-config-airbnb": "^16.0.0",

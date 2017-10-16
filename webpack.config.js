@@ -10,7 +10,7 @@ const config = {
   },
   devtool: 'source-map',
   entry: [
-    path.resolve(__dirname, 'src/index.jsx'),
+    path.resolve(__dirname, 'public/index.jsx'),
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -63,7 +63,7 @@ const config = {
   plugins: [
     // Create HTML file that includes references to bundled CSS and JS.
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'public/index.html',
       minify: {
         removeComments: true,
         collapseWhitespace: true,

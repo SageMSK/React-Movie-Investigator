@@ -26,10 +26,6 @@ const MovieSchema = new Schema({
     type: String,
     trim: true,
   },
-  rewatch: {
-    type: String,
-    trim: true,
-  },
   dateWatched: {
     type: Date,
   },
