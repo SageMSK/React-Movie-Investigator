@@ -5,8 +5,10 @@ export function signUpUser(userInfo, callback) {
   return function action(dispatch) {
     axios.post('/v1/user/signup', userInfo)
       .then((response) => {
-        console.log(response.data);
+        localStorage.setItem('token', response.data.token);
+        dispatch({ type: AUTH_USER });
       })
+      .then(() => callback()) // need callback to successfully redirect after action
       .catch((error) => {
         console.log(error);
       });
@@ -15,10 +17,12 @@ export function signUpUser(userInfo, callback) {
 
 export function signInUser(userInfo, callback) {
   return function action(dispatch) {
-    axios.post('/v1/users/signin', userInfo)
+    axios.post('/v1/user/signin', userInfo)
       .then((response) => {
-        console.log(response.data);
+        localStorage.setItem('token', response.data.token);
+        dispatch({ type: AUTH_USER });
       })
+      .then(() => callback()) // need callback to successfully redirect after action
       .catch((error) => {
         console.log(error);
       });

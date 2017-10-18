@@ -18,7 +18,7 @@ class Navbar extends Component {
   renderNavbarBasedOnAuthStatus() {
     // if user is authenticated then replace the signup/signin nav links
     // list items need key attribute
-    if (this.props.authenticated) {
+    if (this.props.userIsAuthenticated) {
       return (
         <li className="navbar__item" key={3}>
           <button onClick={this.logOutUser}>Sign Out</button>
@@ -46,9 +46,6 @@ class Navbar extends Component {
           <li className="navbar__item">
             <NavLink to="/about" activeClassName="active">About</NavLink>
           </li>
-          <li className="navbar__item">
-            <NavLink to="/asdf">Not Found</NavLink>
-          </li>
           {this.renderNavbarBasedOnAuthStatus()}
         </ul>
       </nav>
@@ -57,19 +54,19 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-  authenticated: PropTypes.bool.isRequired,
+  userIsAuthenticated: PropTypes.bool.isRequired,
   signOutUser: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
-  return { authenticated: state.auth.authenticated };
+  return { userIsAuthenticated: state.auth.authenticated };
 }
 
-/*
-  Need withRouter wrapper from react-router-dom in order to get
-  activeClassName styles/routing path to work (with Redux)
-
-  More info: https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/withRouter.md
-  Solved in: https://github.com/ReactTraining/react-router/issues/4638#issuecomment-305306466
+/**
+ * Need withRouter wrapper from react-router-dom in order to get
+ * activeClassName styles/routing path to work (with Redux)
+ *
+ * More info: https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/withRouter.md
+ * Solved in: https://github.com/ReactTraining/react-router/issues/4638#issuecomment-305306466
  */
 export default withRouter(connect(mapStateToProps, { signOutUser })(Navbar));

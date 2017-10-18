@@ -8,6 +8,9 @@ import About from './common/About';
 import NotFound from './common/NotFound';
 import SignInForm from './users/auth/SignInForm';
 import SignUpForm from './users/auth/SignUpForm';
+import CreateNewMovieForm from './movies/CreateNewMovieForm';
+import MovieList from './movies/MovieList';
+import MovieInfoPage from './movies/MovieInfoPage';
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
           <Route path="/about" component={About} />
           <Route path="/signin" component={SignInForm} />
           <Route path="/signup" component={SignUpForm} />
+          <Route path="/movies" component={MovieList} />
+          <Route path="/movie/new" component={CreateNewMovieForm} />
+          <Route path="/movie/:id" component={MovieInfoPage} />
           <Route component={NotFound} />
         </Switch>
       </div>

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-for */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
@@ -7,7 +8,7 @@ import { signInUser } from './../../../actions/userAuthActions';
 
 const renderField = field => (
   <div className="form__field">
-    <label htmlFor={field.label}>{field.label}</label>
+    <label htmlFor={field.labelfor}>{field.label}</label>
     <input
       type={field.type}
       {...field.input}
@@ -36,6 +37,7 @@ class SignInForm extends Component {
         <div>
           <Field
             label="Email"
+            labelfor="email"
             type="email"
             name="email"
             component={renderField}
@@ -43,6 +45,7 @@ class SignInForm extends Component {
 
           <Field
             label="Password"
+            labelfor="password"
             type="password"
             name="password"
             component={renderField}
@@ -52,7 +55,7 @@ class SignInForm extends Component {
 
           <hr className="form__underline" />
 
-          <Link to="/signup" className="form__footer">
+          <Link to="/signup" href="/signup" className="form__footer">
             Don`t have an account? Create Your Free Account
           </Link>
         </div>

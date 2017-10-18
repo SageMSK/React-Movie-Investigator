@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-for */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
@@ -10,7 +11,7 @@ const renderField = (field) => {
 
   return (
     <div className="form__field">
-      <label htmlFor={field.label}>{field.label}</label>
+      <label htmlFor={field.labelfor}>{field.label}</label>
       <input
         className={touched && error ? 'form__input-error-border' : ''}
         type={field.type}
@@ -46,24 +47,28 @@ class SignUpForm extends Component {
         <div>
           <Field
             label="Email"
+            labelfor="email"
             type="email"
             name="email"
             component={renderField}
           />
           <Field
             label="First Name"
+            labelfor="firstName"
             type="text"
             name="firstName"
             component={renderField}
           />
           <Field
             label="Last Name"
+            labelfor="lastName"
             type="text"
             name="lastName"
             component={renderField}
           />
           <Field
             label="Password"
+            labelfor="password"
             type="password"
             name="password"
             placeholder="Must be least 6 characters"
@@ -71,6 +76,7 @@ class SignUpForm extends Component {
           />
           <Field
             label="Confirm Password"
+            labelfor="confirm_password"
             type="password"
             name="confirm_password"
             component={renderField}
@@ -78,10 +84,10 @@ class SignUpForm extends Component {
           <button className="form__btn" type="submit">Sign Up</button>
 
           <hr className="form__underline" />
-          <Link className="form__footer" to="/signin">Already have an account?</Link>
+          <Link className="form__footer" href="/signin" to="/signin">Already have an account?</Link>
         </div>
       </form>
-    )
+    );
   }
 }
 
