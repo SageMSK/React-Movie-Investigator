@@ -10,7 +10,7 @@ userRouter.post('/signup', validateBody(signUp), userController.signUp);
 userRouter.post('/signin', localLogin, userController.signIn);
 
 // password update
-userRouter.post('/passwordreset', validateBody(passwordResetEmail), userResetEmailController.sendPWResetEmail);
-userRouter.post('/updatenewpassword/:token', userResetEmailController.updateNewPassword);
+userRouter.post('/passwordreset', validateBody(passwordResetEmail), userResetEmailController.sendPasswordResetEmail);
+userRouter.post('/updatenewpassword/:passwordResetToken', userResetEmailController.updateNewPassword);
 
 module.exports = userRouter;

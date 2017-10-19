@@ -1,4 +1,7 @@
-import { GET_ALL_MOVIES, GET_SINGLE_MOVIE } from './../actions/actionTypes';
+import {
+  GET_ALL_MOVIES,
+  GET_SINGLE_MOVIE,
+} from './../actions/actionTypes';
 
 const initialState = {
   allMovies: [],

@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const User = require('./user.model');
 const mail = require('./../services/nodemailer');
 
-exports.sendPWResetEmail = async (req, res) => {
+exports.sendPasswordResetEmail = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
@@ -37,8 +37,10 @@ exports.sendPWResetEmail = async (req, res) => {
 exports.updateNewPassword = async (req, res) => {
   try {
     // Find the user with matching token and a non-expired token
+    const resetToken = req.params.passwordResetToken;
+
     const user = await User.findOne({
-      resetPasswordToken: req.body.resetToken,
+      resetPasswordToken: resetToken,
       resetPasswordExpires: { $gt: Date.now() },
     });
 
@@ -54,9 +56,9 @@ exports.updateNewPassword = async (req, res) => {
     user.resetPasswordExpires = undefined;
 
     // update and save
-    await user.save();
+    const userWithUpdatedPassword = await user.save();
 
-    return res.status(200).json({ message: 'Your account has been updated.', token: user.createToken() });
+    return res.status(200).json({ message: 'Your account has been updated.', token: userWithUpdatedPassword.createToken() });
   } catch (error) {
     return res.status(400).json(error);
   }

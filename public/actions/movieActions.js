@@ -5,7 +5,7 @@ export function createNewMovie(movieInfo) {
   return function action(dispatch) {
     axios.post('/v1/movie/create', movieInfo)
       .catch((error) => {
-        console.error(error);
+        console.error(error.response);
       });
   }
 }
@@ -17,7 +17,7 @@ export function getAllMovies() {
         console.log(response.data);
       })
       .catch((error) => {
-        console.error(error);
+        console.error(error.response);
       });
   };
 }
@@ -29,17 +29,27 @@ export function getSingleMovie(id) {
         console.log(response.data);
       })
       .catch((error) => {
-        console.error(error);
+        console.error(error.response);
       });
   };
 }
 
-// TODO
-export function updateMovieInfo(movieInfo) {
-  //
+export function updateMovieInfo(id, movieInfo, callback) {
+  return function action(dispatch) {
+    axios.patch(`/v1/movie/${id}`, movieInfo)
+      .then(() => callback())
+      .catch((error) => {
+        console.error(error.response);
+      });
+  };
 }
 
-// TODO
-export function deleteMovie(id) {
-  //
+export function deleteMovie(id, callback) {
+  return function action(dispatch) {
+    axios.delete(`/v1/movie/${id}`)
+      .then(() => callback())
+      .catch((error) => {
+        console.error(error.response);
+      });
+  };
 }
